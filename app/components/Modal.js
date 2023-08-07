@@ -4,6 +4,8 @@ import ProductCardCart from "./ProductCardCart";
 
 function Modal({ isVisible }) {
     const setModalVisibleFalse = useStore((state) => state.setModalVisibleFalse);
+    const cart = useStore((state) => state.cart);
+
     if (!isVisible) return null;
 
     return (
@@ -16,16 +18,12 @@ function Modal({ isVisible }) {
                     </button>
                 </div>
                 <div className="flex-1 p-4 overflow-y-auto">
-                    {/* Add the ProductCard component here */}
-                    <div className="flex justify-center items-center">
-                        <ProductCardCart />
-                    </div>
-                    <div className="flex justify-center items-center">
-                        <ProductCardCart />
-                    </div>
-                    <div className="flex justify-center items-center">
-                        <ProductCardCart />
-                    </div>
+                    {/* Render the ProductCardCart components for each item in the cart */}
+                    {cart.map((item) => (
+                        <div key={item.id} className="flex justify-center items-center">
+                            <ProductCardCart item={item} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
