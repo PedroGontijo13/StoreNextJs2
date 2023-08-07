@@ -1,19 +1,47 @@
 'use client'
-import Image from 'next/image'
-import Modal from './components/Modal'
-import { useState } from 'react'
-import useStore from './store/store'
+import React, { useEffect } from 'react';
+import Modal from './components/Modal';
+import useStore from './store/store';
+import ProductCard from './components/ProductCard';
+import GetStripeProducts from './utils/getStripeProducts';
 
 export default function Home() {
-  const modalVisible = useStore((state) => state.modalVisible)
+  const modalVisible = useStore((state) => state.modalVisible);
+  const addProducts = useStore((state) => state.addProducts);
+  const products = useStore((state) => state.products);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsStripe = await GetStripeProducts();
+        console.log(productsStripe)
+        addProducts(productsStripe);
+        console.log(products);
+      } catch (error) {
+        console.error('Error fetching Stripe products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, [addProducts]);
 
   return (
-    <main className="flex">
+    <main>
       <p>Hello</p>
-
       {modalVisible && (
         <Modal isVisible={modalVisible} />
       )}
+      <div className='flex p-10 justify-between items-center'>
+        {products && products.length > 0 ? (
+          products.map((product) => (
+            <div key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))
+        ) : (
+          <p>No products available.</p>
+        )}
+      </div>
     </main>
-  )
+  );
 }

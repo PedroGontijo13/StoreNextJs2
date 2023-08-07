@@ -1,9 +1,11 @@
-import { create } from "zustand"
+import { create } from "zustand";
 
 const useStore = create((set) => ({
+    products: [],
     modalVisible: false,
-    setModalVisible: () => set((state) => ({ modalVisible: true })),
-    setModalVisibleFalse: () => set((state) => ({ modalVisible: false }))
-}))
+    setModalVisible: () => set({ modalVisible: true }),
+    setModalVisibleFalse: () => set({ modalVisible: false }),
+    addProducts: (productsStripe) => set((state) => ({ products: [...state.products, ...productsStripe] })),
+}));
 
-export default useStore
+export default useStore;
