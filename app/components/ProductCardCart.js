@@ -29,7 +29,6 @@ function ProductCardCart({ item }) {
                             <span className="text-3xl font-bold text-slate-900">${item.unit_amount / 100}</span>
                         </p>
                     </div>
-
                     <div className="flex items-center justify-between mt-2">
                         <button
                             onClick={handleDecrease}
