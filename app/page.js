@@ -14,8 +14,14 @@ export default function Home() {
     const fetchProducts = async () => {
       try {
         const productsStripe = await GetStripeProducts();
-        console.log(productsStripe)
-        addProducts(productsStripe);
+
+        // Add the quantity property to each product
+        const productsWithQuantity = productsStripe.map(product => ({
+          ...product,
+          quantity: 1, // Initialize the quantity for each product
+        }));
+
+        addProducts(productsWithQuantity);
         console.log(products);
       } catch (error) {
         console.error('Error fetching Stripe products:', error);

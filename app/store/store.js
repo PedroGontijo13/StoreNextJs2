@@ -7,15 +7,21 @@ const useStore = create((set) => ({
     setModalVisible: () => set({ modalVisible: true }),
     setModalVisibleFalse: () => set({ modalVisible: false }),
     addProducts: (productsStripe) => set((state) => ({ products: [...state.products, ...productsStripe] })),
-    addItemToCart: (params) => {
-        const { newItem } = params
+    addItemToCart: (item) => {
         set((state) => {
-            const newCart = [...state.cart, newItem]
-            return {
-                ...state,
-                cart: newCart,
+            const existingItem = state.cart.find((cartItem) => cartItem.id === item.id);
+            if (existingItem) {
+                const updatedCartItems = state.cart.map((cartItem) => {
+                    if (cartItem.id === item.id) {
+                        return { ...cartItem, quantity: cartItem.quantity + 1 };
+                    }
+                    return cartItem;
+                });
+                return { cart: updatedCartItems };
+            } else {
+                return { cart: [...state.cart, { ...item, quantity: 1 }] };
             }
-        })
+        });
     },
     removeItemFromCart: (params) => {
         const { itemIndex } = params;

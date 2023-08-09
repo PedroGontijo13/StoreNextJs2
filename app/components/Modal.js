@@ -9,10 +9,12 @@ function Modal() {
     const cartItems = useStore((state) => state.cart);
     const router = useRouter(); // Initialize the router object
 
+    console.log(cartItems.newItem)
+
     async function checkout() {
         const lineItems = cartItems.map((cartItem) => ({
-            price: cartItem.id,
-            quantity: 1,
+            price: cartItem.newItem.id,
+            quantity: cartItem.quantity,
         }));
 
         const res = await fetch("/api/checkout", {
