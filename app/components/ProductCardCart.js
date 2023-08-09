@@ -1,16 +1,10 @@
 'use client'
 import React from "react";
+import useStore from "../store/store";
 
 function ProductCardCart({ item }) {
-    const handleIncrease = () => {
-        setQuantity((prevQuantity) => prevQuantity + 1);
-    };
-
-    const handleDecrease = () => {
-        if (quantity > 1) {
-            setQuantity((prevQuantity) => prevQuantity - 1);
-        }
-    };
+    const handleIncrease = useStore((state) => state.increaseCartItemQuantity)
+    const handleDecrease = useStore((state) => state.decreaseCartItemQuantity)
 
     console.log(item.newItem.product)
 

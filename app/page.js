@@ -37,7 +37,7 @@ export default function Home() {
       {modalVisible && (
         <Modal isVisible={modalVisible} />
       )}
-      <div className='flex p-10 justify-between items-center'>
+      <div className='flex flex-col md:flex-row p-10 justify-between items-center'>
         {products && products.length > 0 ? (
           products.map((product) => (
             <div key={product.id}>
