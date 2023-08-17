@@ -6,7 +6,7 @@ function ProductCard({ product }) {
 
     const handleAddToCart = () => {
         // Call the addItemToCart function with the product to be added to the cart
-        addItemToCart({ newItem: product });
+        addItemToCart(product);
     };
 
     return (
