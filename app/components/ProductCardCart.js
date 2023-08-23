@@ -25,14 +25,14 @@ function ProductCardCart({ item }) {
                     </div>
                     <div className="flex items-center justify-between mt-2">
                         <button
-                            onClick={handleDecrease}
+                            onClick={() => handleDecrease(item)}
                             className="px-3 py-1 rounded bg-slate-900 text-white"
                         >
                             -
                         </button>
                         <span className="text-lg font-medium">{item.quantity}</span>
                         <button
-                            onClick={handleIncrease}
+                            onClick={() => handleIncrease(item)}
                             className="px-3 py-1 rounded bg-slate-900 text-white"
                         >
                             +
