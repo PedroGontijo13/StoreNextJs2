@@ -4,6 +4,7 @@ import Modal from './components/Modal';
 import useStore from './store/store';
 import ProductCard from './components/ProductCard';
 import GetStripeProducts from './utils/getStripeProducts';
+import Banner from './components/Banner';
 
 export default function Home() {
   const modalVisible = useStore((state) => state.modalVisible);
@@ -36,6 +37,9 @@ export default function Home() {
       {modalVisible && (
         <Modal isVisible={modalVisible} />
       )}
+      <div>
+        <Banner />
+      </div>
       <div className='flex flex-col md:flex-row p-10 justify-between items-center'>
         {products && products.length > 0 ? (
           products.map((product) => (
