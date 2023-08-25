@@ -33,17 +33,17 @@ function Modal() {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-end items-end">
-            <div className="w-[600px] bg-white h-full flex flex-col">
-                <div className="bg-white p-2 rounded flex justify-between">
+            <div className="w-[600px] bg-white border-gray-200 dark:bg-gray-900 h-full flex flex-col">
+                <div className="bg-white p-2 dark:bg-gray-900 dark:text-white rounded flex justify-between">
                     Modal
-                    <button onClick={setModalVisibleFalse} className="text-black text-xl ml-2 flex-end">
+                    <button onClick={setModalVisibleFalse} className="text-black dark:text-white text-xl ml-2 flex-end">
                         X
                     </button>
                 </div>
                 <div className="flex-1 p-4 overflow-y-auto">
                     {/* Render the ProductCardCart components for each item in the cart */}
                     {cartItems.length === 0 ? (
-                        <div className="text-center text-gray-600 p-4">
+                        <div className="text-center text-gray-600 p-4 dark:text-white">
                             No items available in the cart.
                         </div>
                     ) : (
@@ -56,7 +56,7 @@ function Modal() {
                     )}
                     <div
                         onClick={checkout}
-                        className="border border-solid border-slate-700 text-xl m-4 p-6 uppercase grid place-items-center hover:opacity-60 cursor-pointer"
+                        className="border border-solid border-slate-700 dark:bg-gray-800 dark:text-white text-xl m-4 p-6 uppercase grid place-items-center hover:opacity-60 cursor-pointer"
                     >
                         Checkout
                     </div>

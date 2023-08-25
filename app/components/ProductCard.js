@@ -11,19 +11,19 @@ function ProductCard({ product }) {
 
     return (
         <div>
-            <div className="group my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+            <div className="group my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 dark:text-white shadow-md">
                 <a className="mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
                     <img className="h-full w-full" src={product.product.images[0]} alt="product image" />
                 </a>
                 <div className="mt-4 px-5 pb-5">
                     <a href="#">
-                        <h5 className="text-xl tracking-tight text-slate-900">{product.product.name}</h5>
+                        <h5 className="text-xl tracking-tight text-slate-900 dark:text-white">{product.product.name}</h5>
                     </a>
                     <div className="mt-2 mb-5 flex items-center justify-between">
                         <p>
-                            <span className="text-3xl font-bold text-slate-900">${product.unit_amount / 100}</span>
+                            <span className="text-3xl font-bold text-slate-900 dark:text-white">${product.unit_amount / 100}</span>
                             {product.product.discountedPrice && (
-                                <span className="text-sm text-slate-900 line-through">{product.product.discountedPrice}</span>
+                                <span className="text-sm text-slate-900 line-through dark:text-white">{product.product.discountedPrice}</span>
                             )}
                         </p>
                     </div>

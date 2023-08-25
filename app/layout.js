@@ -1,3 +1,4 @@
+import Footer from './components/Footer'
 import NavBar from './components/navBar'
 import './globals.css'
 import { Inter } from 'next/font/google'
@@ -13,9 +14,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className + ''}>
-        <NavBar />
-        <div className='container mx-auto'>
-          {children}
+        <div className='dark:bg-gray-900 w-full dark:text-white min-h-screen flex flex-col'>
+          <NavBar />
+          <div className='container mx-auto flex-grow'>
+            {children}
+          </div>
+          <Footer className='fixed bottom-0 left-0 w-full mx-auto' /> {/* Added classNames and styling */}
         </div>
       </body>
     </html>
