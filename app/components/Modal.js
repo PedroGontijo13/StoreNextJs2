@@ -9,6 +9,14 @@ function Modal() {
     const cartItems = useStore((state) => state.cart);
     const router = useRouter(); // Initialize the router object
 
+    const calculateTotalPrice = () => {
+        let TotalPrice = 0
+        cartItems.forEach(item => {
+            TotalPrice += item.unit_amount * item.quantity
+        })
+        return TotalPrice / 100
+    }
+
     console.log(cartItems)
 
     async function checkout() {
@@ -54,6 +62,9 @@ function Modal() {
                             </div>
                         ))
                     )}
+                    <div className="text-center text-gray-600 p-4 dark:text-white">
+                        ${calculateTotalPrice()}
+                    </div>
                     <div
                         onClick={checkout}
                         className="border border-solid border-slate-700 dark:bg-gray-800 dark:text-white text-xl m-4 p-6 uppercase grid place-items-center hover:opacity-60 cursor-pointer"

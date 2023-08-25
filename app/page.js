@@ -33,7 +33,6 @@ export default function Home() {
 
   return (
     <main>
-      <p>Hello</p>
       {modalVisible && (
         <Modal isVisible={modalVisible} />
       )}
