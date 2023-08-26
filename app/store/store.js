@@ -30,18 +30,23 @@ const useStore = create((set) => ({
     },
     decreaseCartItemQuantity: (item) => {
         set((state) => {
-            const existingItem = state.cart.find((cartItem) => cartItem.id === item.id)
-            if (existingItem && existingItem.quantity > 1) {
-                const updatedCartItems = state.cart.map((cartItem) => {
-                    if (cartItem.id === item.id) {
-                        return { ...cartItem, quantity: cartItem.quantity - 1 }
-                    }
-                    return cartItem
-                })
-                return { cart: updatedCartItems }
+            const existingItem = state.cart.find((cartItem) => cartItem.id === item.id);
+            if (existingItem) {
+                if (existingItem.quantity > 1) {
+                    const updatedCartItems = state.cart.map((cartItem) => {
+                        if (cartItem.id === item.id) {
+                            return { ...cartItem, quantity: cartItem.quantity - 1 };
+                        }
+                        return cartItem;
+                    });
+                    return { cart: updatedCartItems };
+                } else {
+                    const updatedCartItems = state.cart.filter((cartItem) => cartItem.id !== item.id);
+                    return { cart: updatedCartItems };
+                }
             }
-            return state
-        })
+            return state;
+        });
     },
     increaseCartItemQuantity: (item) => {
         set((state) => {
