@@ -1,18 +1,28 @@
 import React from "react";
 import useStore from "../store/store";
+import { useRouter } from "next/navigation";
 
 function ProductCard({ product }) {
     const addItemToCart = useStore((state) => state.addItemToCart);
+    const router = useRouter()
+    const setProduct = useStore((state) => state.setProduct)
+    const setModalVisible = useStore((state) => state.setModalVisible);
 
     const handleAddToCart = () => {
         // Call the addItemToCart function with the product to be added to the cart
+        setModalVisible()
         addItemToCart(product);
+    };
+
+    const handleProductClick = () => {
+        setProduct({ product })
+        router.push('/product?price_id=' + product.id)
     };
 
     return (
         <div>
-            <div className="group my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 dark:text-white shadow-md">
-                <a className="mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+            <div className="group bg-white-100 my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 dark:text-white shadow-md">
+                <a className="mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" onClick={handleProductClick}>
                     <img className="h-full w-full" src={product.product.images[0]} alt="product image" />
                 </a>
                 <div className="mt-4 px-5 pb-5">

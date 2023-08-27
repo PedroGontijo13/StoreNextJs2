@@ -10,6 +10,7 @@ export default function Home() {
   const modalVisible = useStore((state) => state.modalVisible);
   const addProducts = useStore((state) => state.addProducts);
   const products = useStore((state) => state.products);
+  const cartItems = useStore((state) => state.cart); // Assuming you have a cartItems state in your store
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,14 +24,16 @@ export default function Home() {
         }));
 
         addProducts(productsWithQuantity);
-        console.log(products);
       } catch (error) {
         console.error('Error fetching Stripe products:', error);
       }
     };
 
-    fetchProducts();
-  }, [addProducts]);
+    // Fetch products only if the cart is empty and products haven't been fetched yet
+    if (cartItems.length === 0 && products.length === 0) {
+      fetchProducts();
+    }
+  }, [addProducts, cartItems, products]);
 
   return (
     <main>

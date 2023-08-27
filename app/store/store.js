@@ -3,10 +3,17 @@ import { create } from "zustand";
 const useStore = create((set) => ({
     products: [],
     cart: [],
+    product: {},
     modalVisible: false,
     setModalVisible: () => set({ modalVisible: true }),
     setModalVisibleFalse: () => set({ modalVisible: false }),
     addProducts: (productsStripe) => set((state) => ({ products: [...state.products, ...productsStripe] })),
+    setProduct: (newProduct) => {
+        set((state) => ({
+            ...state,
+            product: newProduct
+        }));
+    },
     addItemToCart: (item) => {
         set((state) => {
             const existingItemIndex = state.cart.findIndex((cartItem) => cartItem.id === item.id);
