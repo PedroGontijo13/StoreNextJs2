@@ -21,7 +21,7 @@ function ProductCard({ product }) {
 
     return (
         <div>
-            <div className="group bg-white-100 my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 dark:text-white shadow-md">
+            <div className="group bg-white-100 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 dark:text-white shadow-md">
                 <a className="mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" onClick={handleProductClick}>
                     <img className="h-full w-full" src={product.product.images[0]} alt="product image" />
                 </a>

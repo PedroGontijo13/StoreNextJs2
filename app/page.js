@@ -43,7 +43,10 @@ export default function Home() {
       <div>
         <Banner />
       </div>
-      <div className='flex flex-col md:flex-row p-10 justify-between items-center'>
+      <div className='my-4 flex justify-start items-center'>
+        <p className='text-xl'>Products:</p>
+      </div>
+      <div className='flex flex-col md:flex-row justify-between items-center'>
         {products && products.length > 0 ? (
           products.map((product) => (
             <div key={product.id}>
