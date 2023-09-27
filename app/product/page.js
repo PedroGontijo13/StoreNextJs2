@@ -3,29 +3,29 @@ import React from 'react'
 import useStore from '../store/store'
 
 export default function ProductPage() {
-    const product = useStore((state) => state.product)
-    const productInfo = product
-    const setModalVisible = useStore((state) => state.setModalVisible);
-    const addItemToCart = useStore((state) => state.addItemToCart)
+    const product = useStore((state) => state.product);
 
-    // // Check if product data is available
-    // if (!product || !product.product || !product.product.product.name) {
-    //     window.location.href = "/";
-    // }
+    // Check if product is null
+    if (!product || !product.product || !product.product.product.name) {
+        // You can handle the case when product is null here
+        // For example, you can display an error message or redirect to another page
+        return <p>Product not found</p>;
+    }
+
+    const setModalVisible = useStore((state) => state.setModalVisible);
+    const addItemToCart = useStore((state) => state.addItemToCart);
 
     const handleAddToCart = () => {
         // Call the addItemToCart function with the product to be added to the cart
-        setModalVisible()
+        setModalVisible();
         addItemToCart(product);
     };
-
-    console.log(product.product.product)
 
     return (
         <div className="flex flex-col p-4">
             <div className="grid p-2 shadow-2xl grid-cols-1 md:grid-cols-2 w-full max-w-[1000px] mx-auto">
                 <div className="">
-                    <img src={product.product.product.images} alt={name} className="w-full h-full" />
+                    <img src={product.product.product.images} alt={product.product.product.name} className="w-full h-full" />
                 </div>
                 <div className="flex flex-col gap-2 p-4">
                     <div className="flex md:flex-col md:items-start text-xl items-center justify-between gap-2">
@@ -39,9 +39,8 @@ export default function ProductPage() {
                     >
                         Add to Cart
                     </button>
-
                 </div>
             </div>
         </div>
-    )
+    );
 }
