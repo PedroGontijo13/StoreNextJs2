@@ -4,16 +4,15 @@ import useStore from '../store/store'
 
 export default function ProductPage() {
     const product = useStore((state) => state.product);
-
+    const setModalVisible = useStore((state) => state.setModalVisible);
+    const addItemToCart = useStore((state) => state.addItemToCart);
+    
     // Check if product is null
     if (!product || !product.product || !product.product.product.name) {
         // You can handle the case when product is null here
         // For example, you can display an error message or redirect to another page
         return <p>Product not found</p>;
     }
-
-    const setModalVisible = useStore((state) => state.setModalVisible);
-    const addItemToCart = useStore((state) => state.addItemToCart);
 
     const handleAddToCart = () => {
         // Call the addItemToCart function with the product to be added to the cart
