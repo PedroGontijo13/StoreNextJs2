@@ -1,6 +1,7 @@
 'use client'
 import React from "react";
 import useStore from "../store/store";
+import Image from "next/image";
 
 function ProductCardCart({ item }) {
     const handleIncrease = useStore((state) => state.increaseCartItemQuantity)
@@ -9,10 +10,10 @@ function ProductCardCart({ item }) {
     console.log(item)
 
     return (
-        <div>
-            <div className="group dark:bg-gray-800 dark:text-white dark:border-gray-800 my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+        <div className="w-full flex flex-col justify-center items-center">
+            <div className="group dark:bg-gray-800 h-full dark:text-white dark:border-gray-800 my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
                 <a className="mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
-                    <img className="h-full w-full" src={item.product.images[0]} alt="product image" />
+                    <img className="w-full" src={item.product.images[0]} alt="product image" />
                 </a>
                 <div className="mt-4 px-5 pb-5">
                     <a href="#">

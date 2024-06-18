@@ -36,7 +36,7 @@ export default function Home() {
   }, [addProducts, cartItems, products]);
 
   return (
-    <main>
+    <main className={modalVisible ? 'overflow-y-hidden fixed' : ''}>
       {modalVisible && (
         <Modal isVisible={modalVisible} />
       )}
@@ -46,10 +46,10 @@ export default function Home() {
       <div className='my-4 flex justify-start items-center'>
         <p className='text-xl'>Products:</p>
       </div>
-      <div className='flex flex-col md:flex-row justify-between items-center'>
+      <div className='flex flex-col md:flex-row justify-center gap-2 items-center'>
         {products && products.length > 0 ? (
           products.map((product) => (
-            <div key={product.id}>
+            <div className='flex flex-col justify-center items-center' key={product.id}>
               <ProductCard product={product} />
             </div>
           ))

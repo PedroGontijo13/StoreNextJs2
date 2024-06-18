@@ -7,7 +7,6 @@ import { usePathname, useRouter } from "next/navigation.js"
 export default function NavBar() {
     const setModalVisible = useStore((state) => state.setModalVisible);
     const pathname = usePathname()
-    console.log(pathname)
 
     return (
         <header>

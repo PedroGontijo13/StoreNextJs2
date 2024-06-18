@@ -1,13 +1,13 @@
 "use client"
 import React from "react";
-import { useRouter } from "next/navigation"; // Import the router object
+import { useRouter } from "next/navigation";
 import useStore from "../store/store";
 import ProductCardCart from "./ProductCardCart";
 
 function Modal() {
     const setModalVisibleFalse = useStore((state) => state.setModalVisibleFalse);
     const cartItems = useStore((state) => state.cart);
-    const router = useRouter(); // Initialize the router object
+    const router = useRouter(); 
 
     const calculateTotalPrice = () => {
         let TotalPrice = 0
@@ -17,12 +17,10 @@ function Modal() {
         return TotalPrice / 100
     }
 
-    console.log(cartItems)
-
     async function checkout() {
         const lineItems = cartItems.map((cartItem) => ({
             price: cartItem.id,
-            quantity: cartItem.quantity, // Use the item's quantity from the cart
+            quantity: cartItem.quantity, 
         }));
 
         const res = await fetch("/api/checkout", {
