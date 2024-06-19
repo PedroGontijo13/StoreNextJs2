@@ -9,6 +9,8 @@ const useStore = create((set, get) => ({
   email: "",
   subject: "",
   message: "",
+  loading: true,
+  setLoading: (loading) => set({loading}),
   setEmail: (email) => set({ email }),
   setSubject: (subject) => set({ subject }),
   setMessage: (message) => set({ message }),
