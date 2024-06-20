@@ -41,7 +41,7 @@ export default function Home() {
   }, [addProducts, cartItems, products]);
 
   return (
-    <main className={modalVisible ? "overflow-y-hidden fixed" : ""}>
+    <main className={`${modalVisible ? "overflow-y-hidden fixed" : ""}`}>
       {modalVisible && <Modal isVisible={modalVisible} />}
       <div>
         <Banner />

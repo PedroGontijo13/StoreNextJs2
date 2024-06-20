@@ -19,8 +19,8 @@ export default function RootLayout({ children }) {
           <NavBar />
           <div className='container mx-auto flex-grow'>
             {children}
+            <Footer className='fixed bottom-0 left-0 w-full mx-auto' />
           </div>
-          <Footer className='fixed bottom-0 left-0 w-full mx-auto' /> {/* Added classNames and styling */}
         </div>
       </body>
     </html>
