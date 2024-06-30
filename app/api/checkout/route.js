@@ -14,10 +14,10 @@ export const POST = async (request) => {
         });
 
         const session = await stripe.checkout.sessions.create({
-            success_url: 'http://localhost:3000/',
-            cancel_url: 'http://localhost:3000/',
+            success_url: 'https://store-next-js2.vercel.app/',
+            cancel_url: 'https://store-next-js2.vercel.app/',
             line_items: body.line_items,
-            mode: 'payment', // Switch to subscription mode
+            mode: 'payment', 
         });
 
         return NextResponse.json({ session });
